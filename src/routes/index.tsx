@@ -1,4 +1,6 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { ForgotPw, Login, Register, ResetPw } from '../features/auth/routes';
+import { NotFound } from '../components/common';
 
 const RouteProtector = () => {
   const isAuthenticated = false;
@@ -8,16 +10,11 @@ const RouteProtector = () => {
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/auth/login' element={<div>login</div>} />
-      <Route path='/auth/register' element={<div>register</div>} />
-      <Route
-        path='/auth/forgot-password'
-        element={<div>forgot password</div>}
-      />
-      <Route path='/auth/reset-password' element={<div>reset password</div>} />
-      <Route path='/auth/verify-email' element={<div>verify email</div>} />
-      <Route path='/auth/verify-phone' element={<div>verify phone</div>} />
-      <Route path='*' element={<div>404</div>} />
+      <Route path='/auth/login' element={<Login />} />
+      <Route path='/auth/register' element={<Register />} />
+      <Route path='/auth/forgot-password' element={<ForgotPw />} />
+      <Route path='/auth/reset-password' element={<ResetPw />} />
+      <Route path='*' element={<NotFound />} />
       <Route element={<RouteProtector />}>
         <Route path='/' element={<div>hello protected route</div>} />
       </Route>
